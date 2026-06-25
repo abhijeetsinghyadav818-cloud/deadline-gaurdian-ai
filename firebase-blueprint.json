@@ -1,0 +1,139 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and AI customization settings",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique user ID from Firebase Auth"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the user registered"
+        },
+        "coachPersona": {
+          "type": "string",
+          "description": "The selected AI coach style (e.g. gentle, drill-sergeant, analytical, stoic)",
+          "enum": ["gentle", "drill-sergeant", "analytical", "stoic"]
+        },
+        "burnoutRisk": {
+          "type": "string",
+          "description": "The current burnout state predicted by AI",
+          "enum": ["low", "moderate", "high", "extreme"]
+        },
+        "burnoutAdvice": {
+          "type": "string",
+          "description": "Burnout mitigation advice from the coach"
+        }
+      },
+      "required": ["uid", "email", "displayName", "createdAt"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "A commitment, assignment, or task created by the user with active AI analysis",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique task ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "ID of the user who owns the task"
+        },
+        "title": {
+          "type": "string",
+          "description": "Task title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed task description"
+        },
+        "deadline": {
+          "type": "string",
+          "description": "ISO date-time string representing the deadline"
+        },
+        "estimatedHours": {
+          "type": "number",
+          "description": "Estimated hours to complete the task"
+        },
+        "importanceLevel": {
+          "type": "string",
+          "description": "The subjective importance of this task",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "status": {
+          "type": "string",
+          "description": "The task execution status",
+          "enum": ["todo", "completed"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the task was created"
+        },
+        "completedAt": {
+          "type": "string",
+          "description": "Timestamp when the task was completed"
+        },
+        "failureProbability": {
+          "type": "number",
+          "description": "AI predicted probability of missing the deadline (0-100)"
+        },
+        "riskLevel": {
+          "type": "string",
+          "description": "AI designated risk level",
+          "enum": ["low", "moderate", "high", "critical"]
+        },
+        "failureReasons": {
+          "type": "array",
+          "description": "AI generated reasons why this deadline is at risk"
+        },
+        "panicScore": {
+          "type": "number",
+          "description": "AI predicted anxiety/panic score for this task (0-100)"
+        },
+        "rescuePlan": {
+          "type": "string",
+          "description": "AI generated micro-completion timeline or survival guide"
+        },
+        "consequences": {
+          "type": "string",
+          "description": "AI simulated consequences of skipping this commitment"
+        },
+        "futureCompleted": {
+          "type": "string",
+          "description": "Positive visualization if completed"
+        },
+        "futureIgnored": {
+          "type": "string",
+          "description": "Negative simulation if ignored"
+        },
+        "lastAnalyzedAt": {
+          "type": "string",
+          "description": "Timestamp when AI last analyzed this task"
+        }
+      },
+      "required": ["id", "userId", "title", "deadline", "estimatedHours", "importanceLevel", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Root user profile document"
+    },
+    "users/{userId}/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Tasks subcollection containing tasks for a specific user"
+    }
+  }
+}

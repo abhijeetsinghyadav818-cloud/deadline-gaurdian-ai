@@ -1,0 +1,6 @@
+{
+  "name": "Deadline Guardian AI",
+  "description": "Predict missed deadlines before they happen and actively help users complete tasks using AI failure prediction, consequence simulation, and an active accountability coach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

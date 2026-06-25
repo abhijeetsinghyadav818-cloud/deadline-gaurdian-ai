@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom background mesh */
+.mesh-glow-1 {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0) 70%);
+}
+
+.mesh-glow-2 {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0) 70%);
+}
+
+.mesh-glow-3 {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0) 70%);
+}
+
+/* Cybernetic holographic background grid */
+.cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cyber-grid-fine {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.006) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* Real-depth 3D Glassmorphic Cards */
+.glass-3d-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  outline: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    0 10px 40px -10px rgba(0, 0, 0, 0.7),
+    0 0 1px 1px rgba(255, 255, 255, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-3d-card-interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-3d-card-interactive::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.glass-3d-card-interactive:hover::after {
+  left: 150%;
+}
+
+.glass-3d-card-interactive:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(168, 85, 247, 0.35);
+  transform: translateY(-5px) scale(1.01) rotateX(2deg) rotateY(1deg);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.25),
+    0 20px 50px -15px rgba(0, 0, 0, 0.8),
+    0 0 15px 1px rgba(168, 85, 247, 0.15);
+}
+
+/* Glass Sidebar Premium */
+.glass-sidebar {
+  background-color: rgba(5, 5, 5, 0.4);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Glow Elements */
+.glow-purple {
+  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.4);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px -5px rgba(239, 68, 68, 0.3);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 30px -5px rgba(99, 102, 241, 0.4);
+}
+
+/* 3D Depth Viewport setup */
+.perspective-container {
+  perspective: 1000px;
+}
+
+.depth-layer-1 {
+  transform: translateZ(10px);
+}
+
+.depth-layer-2 {
+  transform: translateZ(20px);
+}
+
+.depth-layer-3 {
+  transform: translateZ(35px);
+}
+
+/* Horizontal scanline laser swipe animation */
+@keyframes laserSweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
+
+.laser-scan {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.6), transparent);
+  animation: laserSweep 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Floating animation for absolute visuals */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sound frequency / vocal wave visualizer */
+@keyframes bounceBar {
+  0%, 100% { height: 4px; opacity: 0.4; }
+  50% { height: 26px; opacity: 1; }
+}
+
+.animate-wave-bar {
+  animation: bounceBar 1.2s ease-in-out infinite;
+}
